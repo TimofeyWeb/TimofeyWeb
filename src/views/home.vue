@@ -52,9 +52,6 @@ export default {
     characters() {
       return this.$store.getters['getCharacterByPage'](this.currentPage);
     },
-    firstCharacter() {
-      return this.$store.getters['getCharacterById']({id: 1, page: 1});
-    },
     episodeWithCharacter() {
       return this.character.episode.slice(0, 5);
     }

@@ -4,7 +4,7 @@
       <img :src="character.image" :alt="character.name">
     </div>
     <div>
-      <h3>
+      <h3 @click="characterInfo">
         {{ character.name }}
       </h3>
       <p>
@@ -33,6 +33,9 @@ export default {
     }
   },
   methods: {
+    characterInfo() {
+      this.$router.push({ name: 'Character', params: {id: this.character.id }} )
+    }
   }
 }
 </script>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { getCharacters } from '@/api/character'
+import { getCharacterById } from '@/api/character'
 
 Vue.use(Vuex)
 
@@ -22,12 +23,15 @@ const store = new Vuex.Store({
       } catch (e) {
         commit('setCharacters', []);
       }
-    }
+    },
+    async fetchCharactersById({commit}, id) {
+      const { results } = await getCharacterById(id)
+      commit('setCharacterById', results);
+    },
   },
   mutations: {
     setCharacters(state, characters) {
       state.characters = characters;
-      // Vue.set(state.characters, {page, characters})
     },
     setCharactersPageCount(state, pages) {
       state.charactersPageCount = pages;
